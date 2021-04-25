@@ -1,6 +1,7 @@
 package domain_design_implementation;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class MobileDevice {
     protected String brand;
@@ -23,7 +24,7 @@ public class MobileDevice {
         amountApps.add(appstore);
     }
 
-
+    // setter and getters for price
     public void setPrice( Double price ){this.price = price;}
     public Double getPrice(){return price;}
 
@@ -75,15 +76,10 @@ public class MobileDevice {
      */
 
 //    @Override
-//    public boolean equals( String inpuString) {
-//        if (this.passcode == inpuString){
-//            return true;
-//        }else{
-//            return false;
-//        }
+//    public boolean equals(String inpuString) {
+//        return this.passcode.equals(inpuString);
 //    }
-
-
+//
 
     @Override
     public String toString() {

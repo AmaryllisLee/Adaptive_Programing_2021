@@ -12,13 +12,22 @@ public class AppStore extends Apps{
 
 
 
-    public AppStore(String name, Double price, Double version, String us,  String pw, Double b){
-        super(name, price, version);
+    public AppStore(String n, Double p, Double v, String us,  String pw, Double b){
+        super(n, p, v);
         username  = us;
         password  = pw;
         balance   = b;
     }
 
+    public void addApps(Apps app) {
+        this.apps.add(app);
+    }
+
+    /**
+     * Check if ther is enough money in balance to purchase app.
+     * @param app
+     * @return true or false
+     */
     public boolean checkBalance(Apps app){
         if  (app.getPrice() > balance){
            return true;
@@ -26,7 +35,4 @@ public class AppStore extends Apps{
         return false;
     }
 
-    public void addApps(Apps app) {
-        this.apps.add(app);
-    }
 }

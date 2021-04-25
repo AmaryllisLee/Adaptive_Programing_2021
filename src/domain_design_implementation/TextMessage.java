@@ -1,5 +1,7 @@
 package domain_design_implementation;
 
+import java.util.Objects;
+
 public class TextMessage {
     private String subject;
     private String content;
@@ -9,18 +11,15 @@ public class TextMessage {
         content  = m;
     }
 
-    /**
-     * Check if content of TextMessage is equal  of less  than maximInteger.
-     * @param limit
-     * @return bool
-     */
-//    @Override
-//    public boolean equals(Integer limit) {
-//        if (content.length() == limit) {
-//            return true;
-//        }
-//        return false;
-//    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof TextMessage)) return false;
+        TextMessage that = (TextMessage) o;
+        return content.equals(that.content);
+    }
+
 
     @Override
     public String toString() {

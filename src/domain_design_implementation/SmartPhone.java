@@ -1,14 +1,9 @@
 package domain_design_implementation;
 import java.util.HashMap;
 
-public class SmartPhone extends MobileDevice{
+public class SmartPhone extends MobileDevice implements Phonecall{
     private  String phonenumber;
     private String  provider;
-
-    public HashMap<String, TextMessage> getLog() {
-        return log;
-    }
-
     private HashMap<String, TextMessage> log = new HashMap<>();
 
 
@@ -17,9 +12,17 @@ public class SmartPhone extends MobileDevice{
         phonenumber = number;
         provider    = pr;
     }
+    public HashMap<String, TextMessage> getLog() {return log;}
 
     public String ring(){return ("Ring ring ring  !");}
 
+
+    /**
+     * add phonenumber and TextMessage to the log of contact. Send a texmessage to another SmartPhone.
+     * @param contact
+     * @param subject
+     * @param message
+     */
     public void send (SmartPhone contact, String subject, String message){
         // create text Message
         TextMessage text = new TextMessage(subject,message);

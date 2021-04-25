@@ -47,8 +47,6 @@ public class Main {
         System.out.println(iphone.downloadApp(app1));
         System.out.println(android.downloadApp(app2));
 
-
-
         //new line
         System.out.println("\n");
 
