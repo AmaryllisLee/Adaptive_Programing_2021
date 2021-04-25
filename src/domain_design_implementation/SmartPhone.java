@@ -7,8 +7,8 @@ public class SmartPhone extends MobileDevice implements Phonecall{
     private HashMap<String, TextMessage> log = new HashMap<>();
 
 
-    public SmartPhone (String b,  String  m,   Double p, String ps, AppStore as,  String number, String pr){
-        super(b,m,p,ps, as);
+    public SmartPhone (String b,  String  m,   Double p, String ps, String sn, AppStore as,  String number, String pr){
+        super(b,m,p,ps,sn, as);
         phonenumber = number;
         provider    = pr;
     }

@@ -27,8 +27,9 @@ public class Apps {
         if (this == o) return true;
         if (!(o instanceof Apps)) return false;
         Apps apps = (Apps) o;
-        return Objects.equals(getPrice(), apps.getPrice());
+        return Objects.equals(name, apps.name) && Objects.equals(version, apps.version);
     }
+
 
 
     @Override

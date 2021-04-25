@@ -8,16 +8,18 @@ public class MobileDevice {
     protected String model;
     protected Double price;
     protected String passcode;
+    protected String serial_number;
 
     private ArrayList<Apps> amountApps = new ArrayList<>();
     private AppStore appstore;
 
 
-    public MobileDevice(String brand, String model, Double price, String passcode, AppStore appstore) {
+    public MobileDevice(String brand, String model, Double price, String passcode, String serial_number, AppStore appstore) {
         this.brand = brand;
         this.model = model;
         this.price = price;
         this.passcode = passcode;
+        this.serial_number = serial_number;
         this.appstore = appstore;
 
         //add appstore in to apps
@@ -70,16 +72,16 @@ public class MobileDevice {
         return ("You don't have enough space to download this app");
     }
 
-    /**
-     * Compare inputSring to password, thus opening phone.
-     * @return true or false
-     */
 
-//    @Override
-//    public boolean equals(String inpuString) {
-//        return this.passcode.equals(inpuString);
-//    }
-//
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof MobileDevice)) return false;
+        MobileDevice that = (MobileDevice) o;
+        return brand.equals(that.brand) && model.equals(that.model) && serial_number.equals(that.serial_number);
+    }
+
 
     @Override
     public String toString() {

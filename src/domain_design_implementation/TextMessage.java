@@ -17,7 +17,7 @@ public class TextMessage {
         if (this == o) return true;
         if (!(o instanceof TextMessage)) return false;
         TextMessage that = (TextMessage) o;
-        return content.equals(that.content);
+        return Objects.equals(subject, that.subject) && Objects.equals(content, that.content);
     }
 
 
