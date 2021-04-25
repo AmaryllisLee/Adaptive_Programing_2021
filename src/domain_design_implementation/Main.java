@@ -1,5 +1,7 @@
 package domain_design_implementation;
 
+import org.w3c.dom.Text;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -23,9 +25,9 @@ public class Main {
         playstore.addApps(app2);
 
         // Define the devices.
-        SmartPhone iphone = new SmartPhone("Apple", "Iphone", 799.99, "0000", appstore,"57896769", "TMobile");
-        SmartPhone android= new SmartPhone("Android", "Samsung", 899.99, "1111", playstore,"52343443", "Vodafone");
-        Tablet ipad = new Tablet("Apple", "Ipad", 599.99, "2222", appstore);
+        SmartPhone iphone = new SmartPhone("Apple", "Iphone", 799.99, "0000","KtVFhWQp", appstore,"57896769", "TMobile");
+        SmartPhone android= new SmartPhone("Android", "Samsung", 899.99, "1111","L5sanriR", playstore,"52343443", "Vodafone");
+        Tablet ipad = new Tablet("Apple", "Ipad", 599.99, "2222", "5FBbniJf", appstore);
 
         // Define Bob en Jaap ( Person objects)
         Person p1 = new Person("Bob", "Utrecht", "bob@hotmail.com");
@@ -57,11 +59,45 @@ public class Main {
 
         // Testing Textmessage
         // Bob (p1) sends a text message from his iphone to Jaap's android
-        TextMessage text = new TextMessage("Hoii", "Hooi dit is "+ p1.getName() + "en ik stuur deze bericht." );
         iphone.send(android, "Hoii", "Hooi dit is "+ p1.getName() + "en ik stuur deze bericht.");
 
         // print log
         System.out.println(android.getLog());
+
+        System.out.println("\n");
+        // Testing equals method
+
+        // Mobile devices
+        System.out.println("Testing equals method" + "\n");
+        System.out.println(iphone.equals(android)); // should return false
+        SmartPhone iphone2 = new SmartPhone("Apple", "Iphone", 799.99, "0000","SnZhS2oe", appstore,"5095803", "TMobile");
+        System.out.println(iphone.equals(iphone2)); // should also return false
+        System.out.println(android.equals(android));// should return true
+
+        // Apps : compare apps based on name and version
+        Apps app1_new= new Apps("Forest", 0.99, 2.1); // compare app1 to this "newer verion of app, should return false
+        System.out.println(app1.equals(app1_new));
+
+        System.out.println("\n");
+
+        // TextMessage
+        TextMessage spam = new TextMessage("SPAM", "SPAM message" ); // create TextMessage to compare
+
+        // Sendd a spam message to android
+        iphone.send(android, "SPAM", "SPAM message");
+        // ccompare every textMessage from phone 1 to spam, check if log of phone 1 contains spam
+        for (String i : android.getLog().keySet()){
+            if(android.getLog().get(i).equals(spam)){
+                System.out.println("Message from "+ i + " is a spam");
+            }
+        }
+
+        // Person
+        if (p1.equals(p2)) {
+            System.out.println("They're the same person");
+        }else{
+            System.out.println(p1.getName() +" is not "+ p2.getName());
+        }
 
 
 
