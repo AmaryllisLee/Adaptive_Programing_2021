@@ -1,22 +1,32 @@
 package domain_design_implementation;
 
-public class AppStore {
+import java.util.ArrayList;
+
+public class AppStore extends Apps{
     private String username;
     private String password;
     private Double  balance;
 
 
-    public AppStore(String us,  String pw, Double b){
-        super(); //TODO: check error
+    private ArrayList<Apps> apps = new ArrayList<>();
+
+
+
+    public AppStore(String name, Double price, Double version, String us,  String pw, Double b){
+        super(name, price, version);
         username  = us;
         password  = pw;
         balance   = b;
     }
 
-    public void download(Apps app, MobileDevice device){//TODO : alternative ways to get amountApps whith addingg device as a parameter
-        if  ((app.getPrice() > balance) & (!device.getAmountApps().contains(app))){
-            device.getAmountApps().add(app);
+    public boolean checkBalance(Apps app){
+        if  (app.getPrice() > balance){
+           return true;
         }
+        return false;
+    }
 
+    public void addApps(Apps app) {
+        this.apps.add(app);
     }
 }

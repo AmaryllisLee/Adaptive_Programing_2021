@@ -3,10 +3,11 @@ package domain_design_implementation;
 import java.util.ArrayList;
 
 public class Person {
+
     private String name;
     private String adress;
     private String email;
-    private ArrayList<MobileDevice> devices;
+    private ArrayList<MobileDevice> devices = new ArrayList<>();
 
 
     public Person(String n, String  a, String e){
@@ -23,8 +24,13 @@ public class Person {
         devices.add(device);
     }
 
+    public String getName() {
+        return name;
+    }
+
     @Override
     public String toString() {
-        return name;
+        String dev = name + " has  " + devices.size() + " devices: "+ devices;
+        return dev;
     }
 }

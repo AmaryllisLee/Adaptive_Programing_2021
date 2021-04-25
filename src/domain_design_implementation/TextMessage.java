@@ -11,12 +11,12 @@ public class TextMessage {
 
     /**
      * Check if content of TextMessage is equal  of less  than maximInteger.
-     * @param error
+     * @param limit
      * @return bool
      */
 //    @Override
-//    public boolean equals(String error) {
-//        if (content.contains(error)) {
+//    public boolean equals(Integer limit) {
+//        if (content.length() == limit) {
 //            return true;
 //        }
 //        return false;
@@ -24,7 +24,7 @@ public class TextMessage {
 
     @Override
     public String toString() {
-        String subjectContent = "Subject: "+ subject;
+        String subjectContent = " Subject: "+ subject;
         String messageContent = "Message:  \n"  + content;
         return (subjectContent + "\n" + messageContent);
 
