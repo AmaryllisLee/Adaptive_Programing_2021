@@ -4,56 +4,39 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] arg) {
+        // Define the FSM of formatieve opdracht 2
+
+        //Define the nodes
+        Node s0 = new Node("s0");
+        Node s1 = new Node("s1");
+        Node s2 = new Node("s2");
+        Node s3 = new Node("s3");
+        // Define the transitions
+        Transition s0_s1  = new Transition(s1, 'B');
+        Transition s0_s2  = new Transition(s2, 'A');
+        Transition s1_s1  = new Transition(s1, 'A');
+        Transition s1_s2  = new Transition(s2, 'B');
+        Transition s2_s3  = new Transition(s3, 'B');
+        Transition s3_s3  = new Transition(s3, 'A');
+        Transition s3_s0  = new Transition(s0, 'B');
+
+        s0.addtransition(s0_s1);
+        s0.addtransition(s0_s2);
+        s1.addtransition(s1_s1);
+        s1.addtransition(s1_s2);
+        s2.addtransition(s2_s3);
+        s3.addtransition(s3_s3);
+        s3.addtransition(s3_s0);
+
+
+        FSM form2A = new FSM(s0); // create your model
+
         Scanner obj = new Scanner(System.in);
         String s = obj.nextLine();
 
-        //Define nodes
-        Node s0 = new Node("s0");
-        Node s1 = new Node ("s1");
-        Node s2 = new Node ("s2");
-        Node s3 = new Node ("s3");
-
-        //Define paths A or B of each node
-        s0.setNodeOnPathA(s2);
-        s0.setNodeOnPathB(s1);
-        s1.setNodeOnPathA(s1);
-        s1.setNodeOnPathB(s2);
-        s2.setNodeOnPathB(s3);
-        s3.setNodeOnPathA(s3);
-        s3.setNodeOnPathB(s0);
-
-        // Implement FSM
-        Node node = s0;
-        for(Integer letter = 0; letter < s.length(); letter++){ // for each letter in String s
-            System.out.println(node); //print current node
-            if (s.charAt(letter) == 'A') // if s[letter] =='A'
-            {
-                if (node.getNodeOnPathA() == null ){
-                    System.out.println("Transition bestaat niet.");
-                    return;
-                }
-                else{
-                    node = node.getNodeOnPathA();
-                }
-            }
-            else if (s.charAt(letter) == 'B')
-            {
-                if (node.getNodeOnPathB() ==null){
-                    System.out.println("Transition bestaat niet.");
-                    return;
-                }
-                else{
-                    node = node.getNodeOnPathB();
-                }
-            }
-            else
-            {
-                System.out.println("Transition bestaat niet.");
-                return;
+        form2A.simulateFSM(s);
 
 
-            }
-        }
-        System.out.println(node.getName());
+
     }
 }
