@@ -15,15 +15,14 @@ public class FSM {
          for (int i= 0; i < input.length(); i++ ){
              Character value = input.charAt(i);
 
-             for (int j= 0; j< currentNode.transitions.size(); i++){
+             for (int j= 0; j< currentNode.transitions.size(); j++){
                  if(currentNode.transitions.get(j).getValue() == value){
                      currentNode = currentNode.transitions.get(j).getConnectedNode();
+                     break;
                  }
-                 else{
-                     return;
-                 }
-                 System.out.println(currentNode.getName());
+
              }
+             System.out.println(currentNode.getName());
          }
     }
 }
