@@ -36,6 +36,14 @@ public class Main {
 
         form2A.simulateFSM(s);
 
+        // Test :
+        // true: BAAB
+        // AAB : should return a " Transiiton doe not exist
+
+        // Define the FSM for the second example: " own design "
+
+
+
 
 
     }
