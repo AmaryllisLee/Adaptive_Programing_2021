@@ -31,18 +31,9 @@ public class FSM {
 
          for (int i= 0; i < input.length(); i++ ){
              Character value = input.charAt(i);
-
-             Boolean transitionFound = false;
-             for (int j= 0; j< currentNode.transitions.size(); j++){
-                 if(currentNode.transitions.get(j).getValue() == value){
-                     currentNode = currentNode.transitions.get(j).getConnectedNode();
-                     transitionFound = true;
-                     break;
-                 }
-
-             }
-             if (transitionFound){
-                nodes_input.add(currentNode.getName());
+             if (currentNode.getNextNode(value) != null){
+                 currentNode  = currentNode.getNextNode(value);
+                 nodes_input.add(currentNode.getName());
              }else {
                  nodes_input.add("Transition does not exist");
                  return nodes_input;
