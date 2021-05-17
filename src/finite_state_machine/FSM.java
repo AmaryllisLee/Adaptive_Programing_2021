@@ -4,13 +4,16 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class FSM {
-    Node startNode;
+    private Node startNode;
 
     public FSM(Node startNode){
         this.startNode = startNode;
     }
 
-
+    /**
+     * Get input of user. The method als check whether input of user is empty or is not A or B.
+     * @return s
+     */
     public static String getInput(){
         Scanner obj = new Scanner(System.in);
         String s = obj.nextLine();
@@ -19,10 +22,14 @@ public class FSM {
             System.out.println("Input consist of A and B. Try again");
             s = obj.nextLine();
         }
-
-
         return s;
     }
+
+    /**
+     * The method returns the order of the nodes from the FSM based on the input.
+     * @param input
+     * @return nodes_input
+     */
     public ArrayList<String> simulateFSM(String input){
 
         ArrayList<String> nodes_input = new ArrayList<>();
@@ -43,4 +50,4 @@ public class FSM {
     }
 }
 
-//https://stackoverflow.com/questions/1119385/junit-test-for-system-out-println
+

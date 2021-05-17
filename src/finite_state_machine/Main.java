@@ -35,12 +35,11 @@ public class Main {
         String s = getInput();
 
         System.out.println(form2A.simulateFSM(s));
-
-        // Test :
-        // true: BAAB
+        // Example input 1: BAAB : should return {s0, s1, s1, s1, s2}
         // AAB : should return [s0, s2 " Transiiton doe not exist]
 
-        // Define the FSM for the second example: " own design "
+        // Define the FSM for the second example: " own design "/
+        // You can find the design for this FSM in eigen_ontwerp.jpeg
 
         Node n0  = new Node("n0");
         Node n1  = new Node("n1");
@@ -62,7 +61,8 @@ public class Main {
 
         FSM own_design = new FSM(n0);
 
-        String s_ =  getInput(); // vb input ABAAA
+        String s_ =  getInput();
+        // Example input:  ABAAA, should return [n0, n1, n2, n2, n2, n2]
 
         System.out.println(own_design.simulateFSM(s_));
 

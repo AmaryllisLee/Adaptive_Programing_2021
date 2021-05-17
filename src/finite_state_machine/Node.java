@@ -12,8 +12,20 @@ public class Node {
 
     public void setName(String name){this.name = name;}
     public String getName(){return name;}
-    public void addtransition(Transition transition){ transitions.add(transition); }
 
+    /**
+     * The method adds transition to transitions
+     * @param transition
+     */
+    public void addtransition(Transition transition){
+        transitions.add(transition);
+    }
+
+    /**
+     * This method searches in transitions for the transition with exact value as the input value.
+     * @param value
+     * @return
+     */
     public Node getNextNode(Character value){
         for (int j= 0; j< transitions.size(); j++){
             if(transitions.get(j).getValue() == value){
