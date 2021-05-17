@@ -1,5 +1,7 @@
 package finite_state_machine;
 
+import org.junit.jupiter.api.BeforeEach;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -20,9 +22,8 @@ class FSMTest {
     Transition s3_s3  = new Transition(s3, 'A');
     Transition s3_s0  = new Transition(s0, 'B');
 
-
-    @org.junit.jupiter.api.Test
-    void simulateFSM() {
+    @BeforeEach
+    public void init(){
         s0.addtransition(s0_s1);
         s0.addtransition(s0_s2);
         s1.addtransition(s1_s1);
@@ -30,10 +31,11 @@ class FSMTest {
         s2.addtransition(s2_s3);
         s3.addtransition(s3_s3);
         s3.addtransition(s3_s0);
-
+    }
+    @org.junit.jupiter.api.Test
+    void simulateFSM() {
         FSM fsm = new FSM(s0);
-
-       ArrayList<String>  expected_output  = new ArrayList<>(Arrays.asList("s0", "s2", "s3", "s3", "s3", "s3", "s0"));
+        ArrayList<String>  expected_output  = new ArrayList<>(Arrays.asList("s0", "s2", "s3", "s3", "s3", "s3", "s0"));
         ArrayList<String> actual = fsm.simulateFSM("ABAAAB");
         assertEquals(expected_output, actual);
 
@@ -41,14 +43,6 @@ class FSMTest {
 
     @org.junit.jupiter.api.Test
     void simulateFSM_error() {
-        s0.addtransition(s0_s1);
-        s0.addtransition(s0_s2);
-        s1.addtransition(s1_s1);
-        s1.addtransition(s1_s2);
-        s2.addtransition(s2_s3);
-        s3.addtransition(s3_s3);
-        s3.addtransition(s3_s0);
-
         FSM fsm = new FSM(s0);
         ArrayList<String>  expected_output = new ArrayList<>(Arrays.asList("s0", "s2", "Transition does not exist"));
         ArrayList<String> actual = fsm.simulateFSM("AA");
