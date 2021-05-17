@@ -2,6 +2,8 @@ package finite_state_machine;
 
 import java.util.Scanner;
 
+import static finite_state_machine.FSM.getInput;
+
 public class Main {
     public static void main(String[] arg) {
         // Define the FSM of formatieve opdracht 2
@@ -30,17 +32,41 @@ public class Main {
 
 
         FSM form2A = new FSM(s0); // create your model
+        String s = getInput();
 
-        Scanner obj = new Scanner(System.in);
-        String s = obj.nextLine();
-
-        form2A.simulateFSM(s);
+        System.out.println(form2A.simulateFSM(s));
 
         // Test :
         // true: BAAB
-        // AAB : should return a " Transiiton doe not exist
+        // AAB : should return [s0, s2 " Transiiton doe not exist]
 
         // Define the FSM for the second example: " own design "
+
+        Node n0  = new Node("n0");
+        Node n1  = new Node("n1");
+        Node n2  = new Node("n2");
+
+        Transition n0_n0  = new Transition(n0, 'B');
+        Transition n0_n1  = new Transition(n1, 'A');
+        Transition n1_n0  = new Transition(n0, 'A');
+        Transition n1_n2  = new Transition(n2, 'B');
+        Transition n2_n2  = new Transition(n2, 'A');
+
+        n0.addtransition(n0_n0);
+        n0.addtransition(n0_n1);
+        n1.addtransition(n1_n0);
+        n1.addtransition(n1_n2);
+        n2.addtransition(n2_n2);
+
+
+
+        FSM own_design = new FSM(n0);
+
+        String s_ =  getInput(); // vb input ABAAA
+
+        System.out.println(own_design.simulateFSM(s_));
+
+
 
 
 

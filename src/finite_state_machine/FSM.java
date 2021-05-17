@@ -1,5 +1,7 @@
 package finite_state_machine;
 
+import java.util.Scanner;
+import java.util.ArrayList;
 
 public class FSM {
     Node startNode;
@@ -8,9 +10,24 @@ public class FSM {
         this.startNode = startNode;
     }
 
-    public void  simulateFSM(String input){
+
+    public static String getInput(){
+        Scanner obj = new Scanner(System.in);
+        String s = obj.nextLine();
+
+        while((s.equals("") || !s.matches("[A-B]+"))){
+            System.out.println("Input consist of A and B. Try again");
+            s = obj.nextLine();
+        }
+
+
+        return s;
+    }
+    public ArrayList<String> simulateFSM(String input){
+
+        ArrayList<String> nodes_input = new ArrayList<>();
          Node currentNode = startNode;
-         System.out.println(currentNode);
+         nodes_input.add(currentNode.getName());
 
          for (int i= 0; i < input.length(); i++ ){
              Character value = input.charAt(i);
@@ -25,12 +42,14 @@ public class FSM {
 
              }
              if (transitionFound){
-             System.out.println(currentNode.getName());
-             }else{
-                 System.out.println("Transition doe not exist");
-                 return;
+                nodes_input.add(currentNode.getName());
+             }else {
+                 nodes_input.add("Transition does not exist");
+                 return nodes_input;
              }
          }
+        return nodes_input;
     }
 }
 
+//https://stackoverflow.com/questions/1119385/junit-test-for-system-out-println
