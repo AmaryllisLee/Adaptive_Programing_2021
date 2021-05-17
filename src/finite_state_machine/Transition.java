@@ -1,8 +1,8 @@
 package finite_state_machine;
 
 public class Transition {
-    Character value;
-    Node connectedNode;
+    private Character value;
+    private Node connectedNode;
 
     public Transition(Node connectedNode, Character value){
         this.connectedNode = connectedNode;
