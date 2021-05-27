@@ -12,7 +12,7 @@ public class Main {
         Dijkstra dijkstra = new Dijkstra();
 
         //Treinrit
-        //In order to test the Treinrit en Vlucht, I will be using the example graph given in Baeldung(the link of this website  is listed at the bottom of the file). The graph  will also be available  in the ReadMe.
+        //In order to test the Treinrit en Vlucht, I will be using the example graph given in Baeldung(the link of this website  is listed at the bottom of the file).
 
         // Define Nodes. The variable names will  be ta, tb...tf in reference to trein a,   trein b, etc.
         Node ta = new Node("A");

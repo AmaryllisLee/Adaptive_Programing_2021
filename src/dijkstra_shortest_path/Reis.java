@@ -10,10 +10,9 @@ public class Reis implements Comparable<Reis> {
     public Reis (LinkedList<Node> nodes) throws Exception{
         this.nodes = nodes;
 
-
-        //  Calculate distance for a Reis TODO: implementations for distance is probably unecessary
+        //  Calculate distance for a Reis
         Integer sumDistance = 0;
-        for(int i = 0;i< nodes.size() -1;i++ ){ //  iterate thorugh each node in nodes
+        for(int i = 0;i< nodes.size() -1;i++ ){ //  iterate through each node in nodes
 
             ArrayList<Stap> stapRoute = nodes.get(i).getStapRoutes(); // get stapRoutes
 
@@ -21,7 +20,7 @@ public class Reis implements Comparable<Reis> {
 
             for (int j = 0;j < stapRoute.size();j++){   // iterate through each stap
                 Stap stap = stapRoute.get(j); // get stap
-                if (stap.getStartnode() == nodes.get(i) && stap.getEndnode() == nodes.get(i+1)){ // check  if stap exist between nodes[i] and nodes[i+1]
+                if (stap.getStartnode() == nodes.get(i) && stap.getEndnode() == nodes.get(i+1)){ //check  if stap exist between nodes[i] and nodes[i+1]
                     stap_exist = true;  // set stap_exist to true
                     sumDistance += stap.getValue();  // increment  sumDistance with value of Stap
                     break;
